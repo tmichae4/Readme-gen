@@ -1,7 +1,8 @@
-const fs = require ('fs');
 
 const inquirer = require('inquirer');
 const generateMarkdown = require('./Develop/utils/generateMarkdown');
+const fs = require ('fs');
+
 const questions = [
     {
         type: "input",
@@ -62,4 +63,7 @@ function init() {
         const ReadMeData = generateMarkdown(answers)
         return ReadMeData
     })
+.then (rmInfo => writeToFile('README.md', rmInfo))
 }
+
+init();
